@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="/"><img src="{{ asset("/images/logoprimeur.jpg") }}"> Primeur de Laigneville</font></font></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Basculer la navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ path("app_category") }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos produits
+            </font></font><span class="visually-hidden"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(actuel)</font></font></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nos offres</font></font></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Promos</font></font></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">À propos</font></font></a>
+        </li>
+        </ul>
+        <ul class="navbar-nav me-auto">
+        
+        {% if app.user %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ app.user.firstname}}</font></font></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="{{ path("app_logout") }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Me déconnecter</font></font></a>
+            <a class="dropdown-item" href="{{ path("app_user", {id : app.user.id}) }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Changer mon mot de passe</font></font></a>
+            <a class="dropdown-item" href="{{ path("app_home")}}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></a>
+            
+            {# {% if 'ROLE_ADMIN' in app.user.roles %}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ path("admin") }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administration des utilisateurs</font></font></a>
+          </div>
+        </li>     
+            
+            {% endif %} #}
+            
+            
+        
+      {% else %}
+      <li class="navbar-nav me-auto">
+          <a class="nav-link active" href="{{ path('app_login')}}">Connexion</a>
+          <a class="nav-link active" href="{{ path('app_registration')}}">Inscription</a>
+      </li>
+      {% endif %}
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="search" placeholder="Recherche">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Recherche</font></font></button>
+      </form>
+    </div>
+  </div>
+</nav>

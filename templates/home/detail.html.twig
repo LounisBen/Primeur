@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome
+{% endblock %}
+
+{% block body %}
+	<div class="content-container" style="margin-top: 100px;">
+		<main class="container">
+			<section class="row">
+				<div>
+					<h1>{{ detail.name }}</h1>
+				</div>
+				<div class="col-4">
+
+					{% if detail.imageName %}
+						<div class="productImage">
+							<a href="{{ path("app_detail", { id: detail.id }) }}">
+								<img style="width:400px; height: 400px;" src="{{ vich_uploader_asset(detail, 'imageFile') }}">
+							</a>
+						</div>
+					{% else %}
+						<div>
+							{% if detail.category.imagesrc %}
+								<a href="{{ path("app_detail", { id: detail.id }) }}">
+									<img style="max-width:400px; height: 400px;" src="/images/categorie/{{ detail.category.imagesrc }}">
+								</a>
+							{% else %}
+								<img style="max-width:400px; height: 400px;" src="/images/placeholder.jpg" alt="">
+							{% endif %}
+						</div>
+					{% endif %}
+
+				</div>
+
+				<div class="col-6" style="font-size: 20px; color: blue">
+					<div class="card bg-primary text-white">
+						<div class="card-body">
+							<p>{{ detail.description }}</p>
+							<p>Secteur :
+								{{ detail.Category.name }}</p>
+
+
+						</div>
+					</div>
+				</div>
+			</section>
+			<div class="container mt-4">
+				<a href="{{ path("app_product", { id: detail.category.id }) }}" , class="badge bg-primary mt-4" title="Revenir au secteur">Retour</a>
+			</div>
+
+		</main>
+	</div>
+{% endblock %}

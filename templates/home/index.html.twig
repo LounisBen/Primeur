@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome
+{% endblock %}
+
+{% block body %}
+	<div class="content-container">
+
+	{% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+            {{ message }}
+            </div>
+        {% endfor %}
+		
+		
+        <div class="row">
+        <img src="/images/fond.jpg" class="img-fluid" alt="...">
+        
+        <div>
+			<center>
+				<h1 class="dispaly-1 text-primary text-center">BIENVENUE CHEZ LE PRIMEUR DE LAIGNEVILLE</h1>
+			</center>
+			<p class="lead text-primary">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam unde quis vitae, sit, nihil enim aliquid, impedit tempora maiores ab aliquam illum adipisci ea quasi neque laborum alias fuga earum! Temporibus minima quo beatae adipisci rem molestiae nobis. Consectetur dolorem officiis sunt sequi provident laboriosam iste veniam ex quisquam placeat, ea corporis eum minus culpa atque corrupti repudiandae soluta quidem iusto perferendis ratione facere. Adipisci possimus, eius facere ipsa mollitia ipsum, ab omnis ratione ea, impedit voluptatum! Nostrum sequi adipisci quisquam ipsa voluptatem, doloribus cum aliquam dolor delectus, odio, enim soluta ullam sapiente ratione iste mollitia impedit accusantium saepe odit!.</p>
+			<hr class="my-2"></div>
+		</div>
+	</div>
+{% endblock %}
