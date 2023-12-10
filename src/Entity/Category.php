@@ -18,7 +18,7 @@ class Category
     #[ORM\Column(length: 20)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'text')]
     private ?string $content = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -101,5 +101,10 @@ class Category
         }
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getId() . " | " . $this->getName();
     }
 }

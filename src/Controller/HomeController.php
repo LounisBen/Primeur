@@ -30,6 +30,7 @@ class HomeController extends AbstractController
         
         return $this->render('home/category.html.twig', [
             'categories' => $categories,
+            
         ]);
     }
     
@@ -38,7 +39,7 @@ class HomeController extends AbstractController
     #[Route('/produit/{id}', name: 'app_product')]
     public function categorie(Category $category,  PaginatorInterface $paginator, Request $request): Response
     {
-        $products = $paginator->paginate(
+        $data = $paginator->paginate(
             $category->getProducts(),
             $request->query->getInt('page', 1),
             6
@@ -46,7 +47,7 @@ class HomeController extends AbstractController
         
         return $this->render('home/product.html.twig', [
             'category' => $category,
-            'products' => $products,
+            'products' => $data,
           
         ]);
        

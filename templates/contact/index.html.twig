@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Primeur de Laigneville - Contact{% endblock %}
+
+{% block body %}
+<div class="content-container" style="margin-top: 80px;">    
+    <div class="container">
+            <h1 class="mt-4">Formulaire de contact</h1>
+
+            
+            {% for message in app.flashes('success') %}          
+                <div class="alert alert-success mt-4">           
+                    {{ message }}
+                </div>
+            {% endfor %}
+        
+            {{ form(form) }}
+    
+    </div>
+</div>   
+{% endblock %}

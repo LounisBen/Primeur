@@ -17,19 +17,19 @@ class ProductFixtures extends Fixture
         // CATEGORIES
         $Category1 = new Category();
         $Category1->setName("FRUITS");
-        $Category1->setContent("rouge");
+        $Category1->setContent("Explorez notre gamme de fruits frais et juteux. Nous offrons une sélection variée, des classiques intemporels aux exotiques. Chaque fruit est choisi pour sa fraîcheur et sa saveur.");
         $Category1->setImagesrc("/fruit.jpg");
         $manager->persist($Category1);
     
         $Category2 = new Category();
         $Category2->setName("LEGUMES");
-        $Category2->setContent("vert");
+        $Category2->setContent("Découvrez notre collection de légumes frais, essentiels pour une alimentation saine. Nous proposons des variétés classiques et rares, toutes sélectionnées pour leur fraîcheur et leur qualité.");
         $Category2->setImagesrc("/legume.jpg");
         $manager->persist($Category2);
     
         $Category3 = new Category();
         $Category3->setName("EPICERIE");
-        $Category3->setContent("parfum");
+        $Category3->setContent("Parcourez notre épicerie pour des produits de qualité. Notre sélection inclut des articles essentiels, des produits biologiques aux spécialités artisanales, tous choisis pour leur authenticité.");
         $Category3->setImagesrc("/epicerie.jpg");
         $manager->persist($Category3);
 

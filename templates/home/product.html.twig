@@ -6,8 +6,15 @@
 
 {% block body %}
 
-	<div class="content-container" style="margin-top: 50px;">
+	<div class="content-container">
 		<div class="row">
+		{% if category.name == "FRUITS" %}
+				<img src="/images/accueilfruits.jpg" class="img-fluid custom-img-height" alt="Fruits">
+			{% elseif category.name == "LEGUMES" %}
+				<img src="/images/accueillegumes.jpg" class="img-fluid custom-img-height" alt="Légumes">
+			{% elseif category.name == "EPICERIE" %}
+				<img src="/images/accueilepiceS.jpg" class="img-fluid custom-img-height" alt="Épicerie">
+			{% endif %}
 			<div class="col-12">
 
 				<h1 class="dispaly-2 text-primary text-center">{{ category.name }}
@@ -20,9 +27,9 @@
 							<div class="col-md-6 mb-4">
 								<div class="card h-100 d-flex flex-row">
 									{% if product.imageName %}
-										<div class="produitImage">
+										<div class="product">
 											<a href="{{ path("app_detail", { id: product.id }) }}">
-												<img style="width: 200px; height: 200px;" src="{{ vich_uploader_asset(image, 'imageFile') }}">
+												<img style="width: 200px; height: 200px;" src="{{ vich_uploader_asset(product, 'imageFile') }}">
 											</a>
 										</div>
 									{% else %}
@@ -45,11 +52,17 @@
 									</div>
 								</div>
 							</div>
+							
+						
 						{% endfor %}
 					</div>
 				</div>
-                 <div class="navigation d-flex justify-content-center">{{ knp_pagination_render(products) }}</div>
-			</div>
+                <div class="navigation d-flex justify-content-center">{{ knp_pagination_render(products) }}</div>
+				<div class="text-center">
+                    <a href="{{ path("app_category", { id: category.id }) }}" class="badge bg-primary mb-4" title="Revenir à la catégorie précédente">Retour à la catégorie précédente</a>
+            </div>
+			
 		</div>
+		
 	</div>
 {% endblock %}

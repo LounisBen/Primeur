@@ -2,17 +2,15 @@
 
 namespace App\Entity;
 
-use Cocur\Slugify\Slugify;
-use App\Repository\ProductRepository;
-use Vich\UploaderBundle\Entity\File;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
+use App\Repository\ProductRepository;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
-#[ORM\HasLifecycleCallbacks]
-#[UniqueEntity('slug', message: 'Ce slug existe déjà.')]
+#[UniqueEntity('name')]
 #[Vich\Uploadable]
 class Product
 {
@@ -25,21 +23,14 @@ class Product
     #[Assert\NotBlank()]
     private ?string $name = null;
 
-    #[ORM\Column(length: 50, unique: true)]
-    #[Assert\NotBlank()]
-    private string $slug;
-
     #[ORM\Column(type: 'string', length: 50)]
     private ?string $description = null;
 
-    #[Vich\UploadableField(mapping: 'product-image', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $imageName = null;
-
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private ?int $imageSize = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -63,13 +54,7 @@ class Product
        
 
     }
-
-    #[ORM\PrePersist]
-    public function prePersist()
-    {
-        $this->slug = (new Slugify())->slugify($this->name);
-    }
-
+    
     #[ORM\PreUpdate]
     public function preUpdate()
     {
@@ -93,19 +78,7 @@ class Product
         return $this;
     }
 
-    public function getSlug(): string
-    {
-        return $this->slug;
-    }
-
-    public function setSlug(string $slug): self
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-
+    
 
     public function getDescription(): ?string
     {
@@ -164,16 +137,6 @@ class Product
     public function getImageName(): ?string
     {
         return $this->imageName;
-    }
-
-    public function setImageSize(?int $imageSize): void
-    {
-        $this->imageSize = $imageSize;
-    }
-
-    public function getImageSize(): ?int
-    {
-        return $this->imageSize;
     }
 
     public function getUpdatedAt(): \DateTimeImmutable

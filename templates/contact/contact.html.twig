@@ -1,7 +1,17 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Demande de {{ contact.firstname }}</h1>
 
-{% block title %}Hello ContactController!{% endblock %}
-
-{% block body %}
-
-{% endblock %}
+        <p>Email : {{ contact.email }}</p>
+        <p>Sujet : {{ contact.subject }}</p>
+        <p>Message : 
+            <div>
+                 {{ contact.message|raw }}
+            </div>
+        </p>
+    </body>
+</html

@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome
+{% block title %}Bienvenue
 {% endblock %}
 
 {% block body %}
 
+
+	<div class="row">
+	<img src="/images/accueil.jpg" class="img-fluid" alt="...">
 	
-	<div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 justify-content-center g-4">
+		
 		{% for cat in categories %}
 			<div class="col mt-5">
 				<a href="{{ path("app_product", {id: cat.id}) }}">
