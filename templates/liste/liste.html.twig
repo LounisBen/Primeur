@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Primeur - Votre liste{% endblock %}
+
+{% block body %}
+<div class="row">
+<img src="/images/accueil/accueilliste.jpg" class="img-fluid" alt="...">
+    <div class="container mt-4">
+    
+        <div class="content-container">
+            <div class="col-10 mx-auto">
+                <h1 class="text-center">Primeur de Laigneville - Votre liste de produits</h1>
+                <hr my-4>
+                <div class="d-flex justify-content-end">
+                                <a href="/empty" class="btn btn-outline-danger btn-sm mb-2 float-end" title="Mettre la liste à 0">Vider la liste</a>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Produit</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Quantité</th>
+                            <th class="text-center align-middle" scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                   
+                    {% for article in liste %}
+                        <tr class="table-secondary">
+                            <td>{{ article.product.name }}</td>
+                            <td>
+                                {% if article.product.imageName %}
+                                    <div class="produitImage">
+                                        <a href="{{ path("app_detail", { id: article.product.id }) }}">
+                                            <img style="width: 100px; height: 100px;" src="{{ vich_uploader_asset(article.product, 'imageFile') }}">
+                                        </a>
+                                    </div>
+                                {% elseif article.product.category.imagesrc %}
+                                    <a href="{{ path("app_detail", { id: article.product.id }) }}">
+                                        <img style="max-width:100px; height: 100px;" src="/images/categorie/{{ article.product.category.imagesrc }}">
+                                    </a>
+                                {% else %}
+                                    <img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
+                                {% endif %}
+                            </td>
+                            <td>{{ article.quantity }}</td>
+                            <td>
+                            <div class="d-flex justify-content-center align-items-center">
+                            <a href="{{ path('app_add', {id: article.product.id}) }}" class="btn btn-outline-primary" title="Ajouter un article">+</a>
+                            <a href="{{ path('app_remove', {id: article.product.id}) }}" class="btn btn-outline-primary" title="Supprimer un article">-</a>
+                            <a href="{{ path('app_delete', {id: article.product.id}) }}" class="btn btn-outline-secondary" title="Supprimer la ligne"><i class="fa-solid fa-trash"></i>
+                            </a>
+                            </div>
+                            </td>
+                        </tr>
+                        
+                    {% else %}
+                        <tr>
+                        <td colspan="6">Votre liste est vide !</td>
+                        </tr>
+                        
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                            
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                
+                <a href="#" class="btn btn-outline-primary mb-2 float-end"  title="Envoyer votre liste">Envoyer votre liste</a>
+                
+                <form>
+                <input type="button" class="btn btn-outline-primary" title="Revenir à la page précédente" value="<< Retour" onclick="history.go(-1)">
+                </form>
+
+                </div>
+        <br>
+        </div>
+        
+    </div>
+</div>   
+{% endblock %}

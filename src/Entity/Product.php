@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\File\File;
@@ -47,19 +49,23 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: ShoppingListItem::class)]
+    private Collection $shoppingListItems;
+
     public function __construct()
     {
+        
+        $this->shoppingListItems = new ArrayCollection();
         $this->updatedAt = new \DateTimeImmutable();
         $this->createdAt = new \DateTimeImmutable();
-       
 
     }
     
-    #[ORM\PreUpdate]
-    public function preUpdate()
-    {
-        $this->updatedAt = new \DateTimeImmutable();
-    }
+    // #[ORM\PreUpdate]
+    // public function preUpdate()
+    // {
+    //     $this->updatedAt = new \DateTimeImmutable();
+    // }
 
     public function getId(): ?int
     {
@@ -176,9 +182,41 @@ class Product
         return $this;
     }
 
-    public function __toString()
+
+    /**
+     * @return Collection<int, ShoppingListItem>
+     */
+    public function getShoppingListItems(): Collection
     {
-        return $this->name;
+        return $this->shoppingListItems;
     }
+
+    public function addShoppingListItem(ShoppingListItem $shoppingListItem): static
+    {
+        if (!$this->shoppingListItems->contains($shoppingListItem)) {
+            $this->shoppingListItems->add($shoppingListItem);
+            $shoppingListItem->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShoppingListItem(ShoppingListItem $shoppingListItem): static
+    {
+        if ($this->shoppingListItems->removeElement($shoppingListItem)) {
+            // set the owning side to null (unless already changed)
+            if ($shoppingListItem->getProduct() === $this) {
+                $shoppingListItem->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    public function __toString(): string
+    {
+        return $this->getId() . " | " . $this->getName();
+    }
+
 
 }

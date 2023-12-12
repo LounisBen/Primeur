@@ -48,8 +48,19 @@
           <a class="nav-link active" href="{{ path('app_registration')}}">Inscription</a>
       </li>
       {% endif %}
-        </li>
+        
       </ul>
+      <div class="d-flex me-4">
+    <a href="{{ path('app_liste')}}" class="text-light fw-bold">
+        <i class="fa-solid fa-cart-shopping cart-icon" title="Ma liste"></i>
+        {# {% set totalQuantity = 0 %}
+        {% for id, quantity in liste %}
+            {% set totalQuantity = totalQuantity + quantity %}
+        {% endfor %}
+        {{ totalQuantity }} produit(s) #}
+    </a>
+</div>
+      
       <form class="d-flex">
         <input class="form-control me-sm-2" type="search" placeholder="Recherche">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Recherche</font></font></button>

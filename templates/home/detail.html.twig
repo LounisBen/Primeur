@@ -15,17 +15,17 @@
 					{% if detail.imageName %}
 						<div class="productImage">
 							<a href="{{ path("app_detail", { id: detail.id }) }}">
-								<img style="width:400px; height: 400px;" src="{{ vich_uploader_asset(detail, 'imageFile') }}">
+								<img style="width:200px; height: 200px;" src="{{ vich_uploader_asset(detail, 'imageFile') }}">
 							</a>
 						</div>
 					{% else %}
 						<div>
 							{% if detail.category.imagesrc %}
 								<a href="{{ path("app_detail", { id: detail.id }) }}">
-									<img style="max-width:400px; height: 400px;" src="/images/categorie/{{ detail.category.imagesrc }}">
+									<img style="max-width:200px; height: 200px;" src="/images/categorie/{{ detail.category.imagesrc }}">
 								</a>
 							{% else %}
-								<img style="max-width:400px; height: 400px;" src="/images/placeholder.jpg" alt="">
+								<img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
 							{% endif %}
 						</div>
 					{% endif %}
@@ -39,7 +39,7 @@
 							<p>Secteur :
 								{{ detail.Category.name }}</p>
 
-
+						<a href="{{ path('app_add', {id: detail.id}) }}" class="btn btn-success bg-secondary" title="clique ici">Ajouter à la liste</a>
 						</div>
 					</div>
 				</div>
