@@ -23,4 +23,22 @@
   height: 400px; /* Ajustez selon vos besoins */
 }
 
+@media print {
+  /* Masquer les éléments non nécessaires */
+  .navbar, .footer, .btn, .navigation-links {
+      display: none !important;
+  }
 
+  /* Ajustements supplémentaires pour l'impression */
+  body {
+      font-size: 10px;
+  }
+
+  .content-container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+  }
+
+  
+}

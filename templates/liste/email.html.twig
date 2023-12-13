@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Votre Liste de Produits</title>
+</head>
+<body style="font-family: Arial, sans-serif; color: #333; margin: 0; padding: 0;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; margin: auto;">
+        <tr>
+            <td style="background-color: #f4f4f4; padding: 20px;">
+                <h1 style="text-align: center; color: #333;">Votre Liste de Produits</h1>
+                <p>Voici les produits que vous avez sélectionnés :</p>
+
+                <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                    <tr>
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Produit</th>
+                        <th style="border: 1px solid #ddd; padding: 8px; text-align: center;">Quantité</th>
+                    </tr>
+                    {% for article in liste %}
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; ">{{ article.product.name }}</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; text-align: center;">{{ article.quantity }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+
+                {% for message in app.flashes('success') %}
+                    <div style="margin-top: 20px; padding: 10px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+

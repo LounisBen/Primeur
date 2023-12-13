@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Résultats de recherche pour '{{ searchData.q }}'
+{% endblock %}
+
+{% block body %}
+    <div class="content-container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-2 text-primary text-center">Résultats de recherche</h1>
+                <hr class="my-2">
+
+                <div class="container">
+                    <div class="row">
+                        {% if products|length > 0 %}
+                            {% for product in products %}
+                                <div class="col-md-6 mb-4">
+                                    <div class="card h-100 d-flex flex-row">
+                                        {% if product.imageName %}
+                                            <div class="product">
+                                                <a href="{{ path('app_detail', { id: product.id }) }}">
+                                                    <img style="width: 200px; height: 200px;" src="{{ vich_uploader_asset(product, 'imageFile') }}">
+                                                </a>
+                                            </div>
+                                        {% else %}
+                                            {% if product.category and product.category.imagesrc %}
+                                                <a href="{{ path('app_detail', { id: product.id }) }}">
+                                                    <img style="max-width:200px; height: 200px;" src="/images/categorie/{{ product.category.imagesrc }}">
+                                                </a>
+                                            {% else %}
+                                                <img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
+                                            {% endif %}
+                                        {% endif %}
+                                        <div class="card-body d-flex flex-column">
+                                            <div>
+                                                <h5 class="card-title">{{ product.name }}</h5>
+                                                <p class="card-text">{{ product.description }}</p>
+                                            </div>
+                                            <a href="{{ path('app_detail', { id: product.id }) }}" class="mt-auto btn btn-outline-primary btn-sm">Voir le détail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="text-center">Aucun produit trouvé pour '{{ searchData.q }}'.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

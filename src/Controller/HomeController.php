@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Entity\Category;
+use App\Model\SearchData;
+use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,9 +37,8 @@ class HomeController extends AbstractController
     }
     
     
-    
     #[Route('/produit/{id}', name: 'app_product')]
-    public function categorie(Category $category,  PaginatorInterface $paginator, Request $request): Response
+    public function product(Category $category,  PaginatorInterface $paginator, Request $request): Response
     {
         $data = $paginator->paginate(
             $category->getProducts(),
@@ -58,10 +59,22 @@ class HomeController extends AbstractController
     {
         return $this->render('home/detail.html.twig', [
             'detail' => $product,
-            
-            
-          
+                   
         ]);
        
+    }
+
+    #[Route('/search', name: 'app_search', methods: ['GET'])]
+    public function search(Request $request, ProductRepository $productRepository): Response
+    {
+        $searchData = new SearchData();
+        $searchData->q = $request->query->get('q', '');
+
+        $products = $productRepository->findBySearch($searchData);
+
+        return $this->render('search/search.html.twig', [
+            'products' => $products,
+            'searchData' => $searchData,
+        ]);
     }
 }

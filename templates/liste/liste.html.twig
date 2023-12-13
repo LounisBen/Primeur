@@ -7,20 +7,21 @@
 <img src="/images/accueil/accueilliste.jpg" class="img-fluid" alt="...">
     <div class="container mt-4">
     
-        <div class="content-container">
+        <div class="content-container" style="margin-top: 100px;">
             <div class="col-10 mx-auto">
                 <h1 class="text-center">Primeur de Laigneville - Votre liste de produits</h1>
                 <hr my-4>
                 <div class="d-flex justify-content-end">
-                                <a href="/empty" class="btn btn-outline-danger btn-sm mb-2 float-end" title="Mettre la liste à 0">Vider la liste</a>
-                </div>
+                        <button onclick="window.print()" class="btn btn-outline-primary" title="Imprimer votre liste"><i class="fas fa-print"></i>Imprimer votre liste</button>
+                        <a href="{{ path('envoyer_liste') }}" class="btn btn-outline-primary" title="Envoyer votre liste"><i class="fas fa-envelope"> </i>Envoyer votre liste</a>
+                    </div>
                 <table class="table">
                     <thead>
                         <tr>
                             <th style="width: 30%;">Produit</th>
                             <th scope="col">Image</th>
                             <th scope="col">Quantité</th>
-                            <th class="text-center align-middle" scope="col">Action</th>
+                            <th class="text-center align-middle" scope="col">Commentaires</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +71,10 @@
                     </tfoot>
                 </table>
                 
-                <a href="#" class="btn btn-outline-primary mb-2 float-end"  title="Envoyer votre liste">Envoyer votre liste</a>
+                
+                <div class="d-flex justify-content-end">
+                                <a href="/empty" class="btn btn-outline-danger btn-sm mb-2 float-end" title="Mettre la liste à 0">Vider la liste</a>
+                </div>
                 
                 <form>
                 <input type="button" class="btn btn-outline-primary" title="Revenir à la page précédente" value="<< Retour" onclick="history.go(-1)">

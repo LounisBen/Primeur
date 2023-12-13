@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Product;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Model\SearchData;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Product>
@@ -20,6 +21,28 @@ class ProductRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Product::class);
     }
+
+    /**
+     * Search Data value
+     *
+     * @param SearchData $searchData
+     * @return void
+     */
+    public function findBySearch(SearchData $searchData)
+    {
+        $query = $this->createQueryBuilder('p');
+
+        if (!empty($searchData->q)) {
+            $query = $query
+                ->andWhere('p.name LIKE :q')
+                ->setParameter('q', "%{$searchData->q}%");
+        }
+
+        return $query->getQuery()->getResult();
+    }
+}
+
+
 
 //    /**
 //     * @return Product[] Returns an array of Product objects
@@ -45,4 +68,3 @@ class ProductRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-}

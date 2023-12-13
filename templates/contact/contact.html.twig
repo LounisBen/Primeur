@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-    </head>
+    <meta charset="UTF-8">
+    <title>Email de Contact</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #1a1a1a;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .message-container {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
     <body>
+    <div class="container">
         <h1>Demande de {{ contact.firstname }}</h1>
 
-        <p>Email : {{ contact.email }}</p>
+        <p>Email : <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></p>
         <p>Sujet : {{ contact.subject }}</p>
-        <p>Message : 
-            <div>
-                 {{ contact.message|raw }}
-            </div>
-        </p>
-    </body>
+        <p>Message :</p>
+        <div class="message-container">
+            {{ contact.message|raw }}
+        </div>
+    </div>
+</body>
 </html
