@@ -10,19 +10,17 @@
 			{{ message }}
 		</div>
 	{% endfor %}
+	
+	<div class="container">
+		<div class="col-12 text-center mt-4">
+			<h1 class="mb-4">Nos promos</h1>
+		</div>
 
-	<div class="col-12 text-center mt-4">
-		<h1 class="mb-4">Nos promos</h1>
-	</div>
+		<div class="row justify-content-center">
 
-	<div
-		class="row justify-content-center">
-		{# <img src="/images/accueil/accueil.jpg" class="img-fluid" alt="..."> #}
+			{% for promo in promos %}
+				<div class="col-md-3 mt-4">
 
-
-		{% for promo in promos %}
-			<div class="col-md-3 mt-4">
-				<a href="{{ path("app_product", {'id': promo.id}) }}">
 					<div class="card text-white bg-primary mb-4 custom-card">
 
 						<div class="card-header d-flex justify-content-center h2">{{ promo.title }}</div>
@@ -48,8 +46,9 @@
 						{% endif %}
 					</div>
 
-				</a>
-			</div>
-		{% endfor %}
+
+				</div>
+			{% endfor %}
+		</div>
 	</div>
-</div>{% endblock %}
+{% endblock %}

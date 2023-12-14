@@ -47,3 +47,19 @@
   font-size: 30px !important;
   
 }
+
+#carouselExampleAutoplaying {
+  width: 500px;
+  margin: auto;
+}
+ .carousel-item img {
+    width: 40%;
+    max-height: 50%;
+}
+
+.carousel-item {
+  border: 2px solid #2b7dce; /* Couleur et épaisseur de la bordure */
+  padding: 5px; /* Espace intérieur de la bordure pour un meilleur aspect */
+}
+
+
