@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title%}Primeur - Nouvelle promo
+{% endblock %}
+
+{% block body  %}
+	<div class="container">
+		<h1 class="mt-4">Création d'une promo</h1>
+		{{ form_start(form) }}
+
+		<div class="form-group">
+			{{ form_label(form.title) }}
+			{{ form_widget(form.title) }}
+			<div class="form-error">
+				{{ form_errors(form.title) }}
+			</div>
+		</div>
+
+		<div class="form-group">
+			{{ form_label(form.description) }}
+			{{ form_widget(form.description) }}
+			<div class="form-error">
+				{{ form_errors(form.description) }}
+			</div>
+		</div>
+
+		{{ form_row(form.imageFile) }}
+
+		<div class="form-group">
+			{{ form_label(form.prix) }}
+			{{ form_widget(form.prix) }}
+			<div class="form-error">
+				{{ form_errors(form.prix) }}
+			</div>
+		</div>
+
+
+		{{ form_row(form._token) }}
+	
+    <hr>
+    {{ form_end(form) }}
+    
+    </div>
+
+
+	
+{% endblock %}

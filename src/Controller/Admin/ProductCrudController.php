@@ -51,7 +51,7 @@ class ProductCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        // On recupère toutes les SousCategories existantes (pour les choix de la SousCategorie quand on modifie/ajoute un Produit)
+        // On recupère toutes les Categories existantes (pour les choix de la Categorie quand on modifie/ajoute un Produit)
         $categories = $this->manager->getRepository(Category::class)->findAll();
 
         if ($pageName=="new") 

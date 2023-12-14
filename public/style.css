@@ -8,7 +8,7 @@
 
 .map-container {
     text-align: center;
-    padding-bottom: 50px; /* Ajustez cette valeur selon vos besoins */
+    padding-bottom: 50px; 
 }
 
 .map-container iframe {
@@ -20,16 +20,16 @@
  }
 
  .custom-img-height {
-  height: 400px; /* Ajustez selon vos besoins */
+  height: 400px; 
 }
 
 @media print {
-  /* Masquer les éléments non nécessaires */
+  
   .navbar, .footer, .btn, .navigation-links {
       display: none !important;
   }
 
-  /* Ajustements supplémentaires pour l'impression */
+  
   body {
       font-size: 10px;
   }
@@ -40,5 +40,10 @@
       padding: 0;
   }
 
+  
+}
+
+.cart-icon {
+  font-size: 30px !important;
   
 }

@@ -1,53 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome
+{% block title %}
+	{{ detail.name }}
 {% endblock %}
 
 {% block body %}
+	
+	
 	<div class="content-container" style="margin-top: 100px;">
 		<main class="container">
-			<section class="row">
-				<div>
-					<h1>{{ detail.name }}</h1>
-				</div>
-				<div class="col-4">
+			<div class="card mx-auto" style="max-width: 50%;"> 
+				<div
+					class="card-body">
+					
+					<h1 class="card-title text-center">{{ detail.name }}</h1>
+					<hr>
 
-					{% if detail.imageName %}
-						<div class="productImage">
-							<a href="{{ path("app_detail", { id: detail.id }) }}">
-								<img style="width:200px; height: 200px;" src="{{ vich_uploader_asset(detail, 'imageFile') }}">
-							</a>
+					<div
+						class="row">
+						
+						<div
+							class="col-md-6">
+							
+							<div class="text-center">
+								{% if detail.imageName %}
+									<img src="{{ vich_uploader_asset(detail, 'imageFile') }}" style="width:200px; height: 200px;" class="img-fluid" alt="{{ detail.name }}">
+								{% else %}
+									{% if detail.category.imagesrc %}
+										<img src="/images/categorie/{{ detail.category.imagesrc }}" class="img-fluid" alt="{{ detail.category.name }}">
+									{% else %}
+										<img src="/images/placeholder.jpg" style="width:200px; height: 200px;" class="img-fluid" alt="Image indisponible">
+									{% endif %}
+								{% endif %}
+							</div>
 						</div>
-					{% else %}
-						<div>
-							{% if detail.category.imagesrc %}
-								<a href="{{ path("app_detail", { id: detail.id }) }}">
-									<img style="max-width:200px; height: 200px;" src="/images/categorie/{{ detail.category.imagesrc }}">
-								</a>
-							{% else %}
-								<img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
-							{% endif %}
-						</div>
-					{% endif %}
 
-				</div>
-
-				<div class="col-6" style="font-size: 20px; color: blue">
-					<div class="card bg-primary text-white">
-						<div class="card-body">
-							<p>{{ detail.description }}</p>
-							<p>Secteur :
-								{{ detail.Category.name }}</p>
-
-						<a href="{{ path('app_add', {id: detail.id}) }}" class="btn btn-success bg-secondary" title="clique ici">Ajouter à la liste</a>
-						</div>
+						
+						<div class="col-md-6 d-flex flex-column">
+                            <div>
+                                <p class="card-text">{{ detail.description }}</p>
+                                <p class="card-text">Secteur : {{ detail.Category.name }}</p>
+                            </div>
+                            <div class="mt-auto">
+                                <a href="{{ path('app_add', {id: detail.id}) }}" class="btn btn-success" title="Ajouter à la liste">Ajouter à la liste</a>
+                            </div>
+                        </div>
+						
 					</div>
-				</div>
-			</section>
-			<div class="container mt-4">
-				<a href="{{ path("app_product", { id: detail.category.id }) }}" , class="badge bg-primary mt-4" title="Revenir au secteur">Retour</a>
-			</div>
 
+					
+				</div>
+			</div>
+		
+					<div class="text-center mt-4">
+						<a href="{{ path("app_product", { id: detail.category.id }) }}" class="btn btn-primary" title="Revenir au secteur">Retour au produit</a>
+					</div>
 		</main>
 	</div>
 {% endblock %}

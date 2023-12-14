@@ -5,19 +5,23 @@
 
 {% block body %}
 
+	<div class="col-12 text-center mt-4">
+		<h1 class="mb-4">Nos rayons</h1>
+	</div>
 
-	<div class="row">
-	<img src="/images/accueil/accueil.jpg" class="img-fluid" alt="...">
-	
-		
+	<div
+		class="row justify-content-center">
+		{# <img src="/images/accueil/accueil.jpg" class="img-fluid" alt="..."> #}
+
+
 		{% for cat in categories %}
-			<div class="col mt-5">
+			<div class="col-md-3 mt-4">
 				<a href="{{ path("app_product", {id: cat.id}) }}">
 					<div class="card text-white bg-primary mb-4 custom-card">
 
 						<div class="card-header d-flex justify-content-center h2">{{ cat.name }}</div>
 						<div class="card-body d-flex flex-column align-items-center justify-content-center">
-							<img src="/images/categorie/{{ cat.imagesrc }}" alt="categorie" style="max-height: 100%; width: 100%;">
+							<img src="/images/categorie/{{ cat.imagesrc }}" alt="categorie" class="img-fluid">
 							<p class="card-text text-center">{{ cat.content }}</p>
 						</div>
 					</div>

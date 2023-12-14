@@ -74,7 +74,7 @@ class ContactController extends AbstractController
         // Utilisez l'email de l'utilisateur connecté
         $userEmail = $user->getEmail();
 
-        // Récupérez votre liste de produits ici
+        // Récupérer liste de produits ici
         $listeSession = $session->get('liste', []);
         $listeProduits = [];
 

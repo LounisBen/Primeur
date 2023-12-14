@@ -39,11 +39,9 @@ class ProductFixtures extends Fixture
             $product->setName($faker->unique()->words(4, true))
                 ->setDescription($faker->realText(10));
 
-            // Assign a random category to the product
             $randomCategory = $faker->randomElement([$Category1, $Category2, $Category3]);
             $product->setCategory($randomCategory);
         
-            // dd($product);
             $manager->persist($product); 
         
         }
