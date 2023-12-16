@@ -8,7 +8,7 @@ vich_uploader:
       uri_prefix: /images/produit
       upload_destination: "%kernel.project_dir%/public/images/produit"
       namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-    promo_image:
+    promo_images:
             uri_prefix: /images/promos
             upload_destination: '%kernel.project_dir%/public/images/promos'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

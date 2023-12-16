@@ -1,48 +1,50 @@
 {% extends "base.html.twig" %}
 
-{% block title%}Primeur - Modification de promo{% endblock %}
+{% block title%}Primeur - Modification de promo
+{% endblock %}
 
 {% block body  %}
-    <div class="container">
-        <h1 class="mt-4">Modification de promo</h1>
+	<div class="container">
+		<h1 class="mt-4">Modification de promo</h1>
 
-<form name="promo" method="post">
+		<form name="promo" method="post" enctype="multipart/form-data">
 
-    <div class="form-group">
-            {{ form_label(form.title) }}
-            {{ form_widget(form.title) }}
-        <div class="form-error">
-            {{ form_errors(form.title) }}
-        </div>
-    </div>
-    
-    {{ form_row(form.imageFile) }}
-        
-    
-    <div class="form-group">
-            {{ form_label(form.description) }}
-            {{ form_widget(form.description) }}
-        <div class="form-error">
-            {{ form_errors(form.description) }}
-        </div>
-    </div>
-     <div class="form-group">
-                {{ form_label(form.prix) }}
-                {{ form_widget(form.prix) }}
-                <div class="form-error">
-                {{ form_errors(form.prix) }}
-                </div>
-                
-    </div> 
+			<div class="form-group">
+				{{ form_label(form.title) }}
+				{{ form_widget(form.title) }}
+				<div class="form-error">
+					{{ form_errors(form.title) }}
+				</div>
+			</div>
 
-    
-    <br>
-    
-    {{ form_row(form._token) }}
+			<div class="form-image">
+				{{ form_row(form.imageFile) }}
+			</div>
 
-		<button type="submit" id="promo_submit" name="promo[submit]" class="btn
-        btn-primary">Modifier une promo</button>
-        </form>
-    </div>
-    <br>
-{% endblock %} 
+			<div class="form-group">
+				{{ form_label(form.description) }}
+				{{ form_widget(form.description) }}
+				<div class="form-error">
+					{{ form_errors(form.description) }}
+				</div>
+			</div>
+			<div class="form-group">
+				{{ form_label(form.prix) }}
+				{{ form_widget(form.prix) }}
+				<div class="form-error">
+					{{ form_errors(form.prix) }}
+				</div>
+
+			</div>
+
+
+			<br>
+
+			{{ form_row(form._token) }}
+
+			<button type="submit" id="promo_submit" name="promo[submit]" class="btn
+				        btn-primary">Modifier une promo</button>
+		</form>
+	</div>
+	<br>
+{% endblock %}

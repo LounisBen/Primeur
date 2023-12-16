@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PromoController extends AbstractController
 {
-    #[Route('/promo', name: 'app_promo', methods: ['GET', 'POST'])]
+    #[Route('/promo', name: 'app_promo', methods: ['GET'])]
     public function index(PromoRepository $promoRepository): Response
     {
         
@@ -63,7 +63,8 @@ class PromoController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $promo = $form->getData();
-        
+            
+
             $manager->persist($promo);
             $manager->flush();
 

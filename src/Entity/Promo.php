@@ -8,7 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+#[UniqueEntity('title')]
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: PromoRepository::class)]
 #[Vich\Uploadable]
 class Promo
@@ -27,13 +30,13 @@ class Promo
     #[Assert\NotBlank()]
     private ?string $description = null;
 
-    #[Vich\UploadableField(mapping: 'promo_image', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField(mapping: 'promo_images', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: 'string', nullable: true)]
     private ?string $imageName = null;
 
-    #[ORM\Column]
+    #[ORM\Column(type: 'float')]
     #[Assert\NotNull()]
     #[Assert\Positive()]
     private ?float $prix = null;
@@ -54,18 +57,20 @@ class Promo
 
     }
 
-    #[ORM\PreUpdate]
-    public function preUpdate()
-    {
-        $this->updatedAt = new \DateTimeImmutable();
-    }
-
     #[ORM\PrePersist()]
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTimeImmutable();
 
     }
+    
+    #[ORM\PreUpdate]
+    public function preUpdate()
+    {
+        $this->updatedAt = new \DateTimeImmutable();
+    }
+
+    
 
     public function getId(): ?int
     {

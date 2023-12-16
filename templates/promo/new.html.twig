@@ -15,7 +15,9 @@
 				{{ form_errors(form.title) }}
 			</div>
 		</div>
-
+		<div class="form-image">
+			{{ form_row(form.imageFile) }}
+		</div>
 		<div class="form-group">
 			{{ form_label(form.description) }}
 			{{ form_widget(form.description) }}
@@ -23,9 +25,7 @@
 				{{ form_errors(form.description) }}
 			</div>
 		</div>
-
-		{{ form_row(form.imageFile) }}
-
+		
 		<div class="form-group">
 			{{ form_label(form.prix) }}
 			{{ form_widget(form.prix) }}
@@ -36,12 +36,11 @@
 
 
 		{{ form_row(form._token) }}
-	
-    <hr>
-    {{ form_end(form) }}
-    
-    </div>
+
+		<hr>
+		{{ form_end(form) }}
+
+	</div>
 
 
-	
 {% endblock %}
