@@ -13,13 +13,13 @@
 	
 	<div class="container">
 		<div class="col-12 text-center mt-4">
-			<h1 class="mb-4">Nos promos</h1>
+			<h1 class="title-style">NOS BONS PLANS</h1>
 		</div>
 
 		<div class="row justify-content-center">
 
 			{% for promo in promos %}
-				<div class="col-md-3 mt-4">
+				<div class="col-md-3 col-12 mt-4">
 
 					<div class="card text-white bg-primary mb-4 custom-card">
 
@@ -39,8 +39,8 @@
 								€</p>
 						</div>
 						{% if is_granted('ROLE_ADMIN') %}
-							<div class="d-flex justify-content-center">
-								<a href="{{ path('edit_promo', { id: promo.id }) }}" class="btn btn-dark btn me-2">Modifier</a>
+							<div class="d-flex flex-column align-items-center">
+								<a href="{{ path('edit_promo', { id: promo.id }) }}" class="btn btn-dark btn mb-2">Modifier</a>
 								<a href="{{ path('delete_promo', { id: promo.id }) }}" class="btn btn-danger btn-sm">Supprimer</a>
 							</div>
 						{% endif %}

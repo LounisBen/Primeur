@@ -4,55 +4,54 @@
 {% endblock %}
 
 {% block body %}
-
-	<div class="col-12 text-center mt-4">
-		<h1 class="mb-4">Nos rayons</h1>
-	</div>
-
-	<div
-		class="row justify-content-center">
-		{# <img src="/images/accueil/accueil.jpg" class="img-fluid" alt="..."> #}
-
-
-		{% for cat in categories %}
-			<div class="col-md-3 mt-4">
-				<a href="{{ path("app_product", {id: cat.id}) }}">
-					<div class="card text-white bg-primary mb-4 custom-card">
-
-						<div class="card-header d-flex justify-content-center h2">{{ cat.name }}</div>
-						<div class="card-body d-flex flex-column align-items-center justify-content-center">
-							<img src="/images/categorie/{{ cat.imagesrc }}" alt="categorie" class="img-fluid">
-							<p class="card-text text-center">{{ cat.content }}</p>
-						</div>
-					</div>
-
-				</a>
-			</div>
-		{% endfor %}
-	</div>
-	<div class="row"></div>
-	<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-		<h2 class="text-center text-primary mt-4">Nos services !</h2>
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img src="/images/caroussel1.jpg" class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="/images/caroussel2.jpg" class="d-block w-100" alt="...">
-			</div>
-			<div class="carousel-item">
-				<img src="/images/caroussel3.jpg" class="d-block w-100" alt="...">
+	<div class="content-container">
+		<div class="col-12 text-center mt-4">
+			<div class="title-container mt-4">
+				<h1 class="title-style">NOS RAYONS</h1>
 			</div>
 		</div>
-		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Previous</span>
-		</button>
-		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
-		</button>
-		<br>
-	</div>
 
+		<div class="row justify-content-center">
+			
+			{% for cat in categories %}
+				<div class="col-md-3 mt-4">
+					<a href="{{ path("app_product", {id: cat.id}) }}">
+						<div class="card text-white bg-primary mb-4 custom-card">
+
+							<div class="card-header d-flex justify-content-center h2">{{ cat.name }}</div>
+							<div class="card-body d-flex flex-column align-items-center justify-content-center">
+								<img src="/images/categorie/{{ cat.imagesrc }}" alt="categorie" class="img-fluid">
+								<p class="card-text">{{ cat.content }}</p>
+							</div>
+						</div>
+
+					</a>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="row"></div>
+		<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+			<h2 class="text-center text-primary mt-4">Nos services !</h2>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="/images/caroussel1.jpg" class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="/images/caroussel2.jpg" class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="/images/caroussel3.jpg" class="d-block w-100" alt="...">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+			<br>
+		</div>
+	</div>
 </div>{% endblock %}

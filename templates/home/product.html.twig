@@ -17,16 +17,16 @@
 									<img src="/images/accueil/accueilepiceS.jpg" class="img-fluid custom-img-height" alt="Épicerie">
 								{% endif %} #}
 		<div class="col-12">
-
-			<h1 class="dispaly-2 text-primary text-center">{{ category.name }}
-			</h1>
-			<hr class="my-2">
+			<div class="title-container mt-4">
+			<h1 class="title-style">{{ category.name }}</h1>
+			
+			</div>
 
 			<div class="container">
 				<div class="row">
 					{% for product in products %}
-						<div class="col-md-3 mb-4">
-							<div class="card h-100 d-flex flex-row">
+						<div class="col-md-6 mb-4">
+							<div class="card h-100 d-flex flex-row card-customp">
 								{% if product.imageName %}
 									<div class="product">
 										<a href="{{ path("app_detail", { id: product.id }) }}">
@@ -40,7 +40,7 @@
 												<img style="max-width:150px; height: 150px;" src="/images/categorie/{{ category.imagesrc }}">
 											</a>
 										{% else %}
-											<img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
+											<img style="max-width:150px; height: 150px;" src="/images/placeholder.jpg" alt="">
 										{% endif %}
 									</div>
 								{% endif %}

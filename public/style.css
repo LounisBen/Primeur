@@ -53,8 +53,8 @@
   margin: auto;
 }
  .carousel-item img {
-    width: 40%;
-    max-height: 50%;
+    width: 30%;
+    max-height: 100%;
 }
 
 .carousel-item {
@@ -62,4 +62,37 @@
   padding: 5px; /* Espace intérieur de la bordure pour un meilleur aspect */
 }
 
+.title-style {
+  font-size: 3em; /* Taille de police plus grande */
+  border: 3px solid #007bff; /* Bordure bleue */
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Arial', sans-serif; /* Choisissez une police élégante */
+  animation: border-animation 3s infinite; /* Animation infinie */
+}
+
+@keyframes border-animation {
+  0%   {border-color: #007bff;}
+  25%  {border-color: #28a745;}
+  50%  {border-color: #ffc107;}
+  75%  {border-color: #dc3545;}
+  100% {border-color: #007bff;}
+}
+
+.title-container {
+    max-width: 50%; /* Ajustez selon vos besoins */
+    margin: 0 auto; /* Centre le div */
+    /* Autres styles si nécessaire */
+}
+
+.card-text {
+  max-height: 100px; /* Ajustez selon vos besoins */
+  overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+}
+
+
+.card-custom {
+  height: 400px; /* Réglez la hauteur souhaitée */
+}
 
