@@ -21,7 +21,7 @@ class ContactFixtures extends Fixture
         for ($i=1; $i <= 20; $i++)
         { 
             $contact = new Contact();
-            $contact->setFirstname($faker->name())
+            $contact->setFirstname($faker->firstname())
                 ->setEmail($faker->email())
                 ->setSubject('Demande n°' . ($i))
                 ->setMessage($faker->text());

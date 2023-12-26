@@ -5,8 +5,9 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Regex;
 
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -63,13 +64,25 @@ class RegistrationType extends AbstractType
                 'label' => 'Mot de passe',
                 'label_attr' => [
                     'class' => 'form-label mt-4'
-                ]
+                ],
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,10}$/",
+                        'message' => "Il faut minimum Minimum huit et maximum 10 caractères, au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial"
+                    ]),
+                ],
                 
             ],
             'second_options' => [
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Confirmer votre mot de passe',
+                ],
+                'constraints' => [
+                    new Regex([
+                        'pattern' => "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,10}$/",
+                        'message' => "Il faut minimum minimum huit et maximum 10 caractères, au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial"
+                    ]),
                 ],
                 'label' => 'Confirmation du mot de passe',
                 'label_attr' => [
