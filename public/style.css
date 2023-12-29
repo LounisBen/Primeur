@@ -34,12 +34,11 @@
       font-size: 10px;
   }
 
-  .content-container {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-  }
-
+.content-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
   
 }
 
