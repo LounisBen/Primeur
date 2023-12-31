@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<div class="col-12 text-center mt-4">
+			<h1 class="title-style">Nos produits locaux</h1>
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-6 col-lg-3 mb-4">
+				<div class="card h-100" id="card1">
+					<img src="/images/apropos/champignon.png" class="card-img-top" alt="Fruits de saison">
+					<div class="card-body">
+						<h5 class="card-title">Champignons de Laigneville</h5>
+						<p class="card-text">Nos champignons de Laigneville, 100% local, et 100% Français.</p>
+						<p>Selon dispo</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-6 col-lg-3 mb-4">
+				<div class="card h-100">
+					<img src="/images/apropos/oeufs.png" class="card-img-top" alt="Fruits exotiques">
+					<div class="card-body" id="card1">
+						<h5 class="card-title">Oeufs frais</h5>
+						<p class="card-text">Des oeufs frais de qualité par des poules élévées en plein air.</p>
+						<p>Arrivages réguliers</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-6 col-lg-3 mb-4">
+				<div class="card h-100" id="card1">
+					<img src="/images/apropos/confiture.png" class="card-img-top" alt="Fruits à la carte">
+					<div class="card-body">
+						<h5 class="card-title">Ma confiture</h5>
+						<p class="card-text">Fabrication artisanale et locale, avec un large choix.</p>
+						<p>Un pur régal</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-6 col-lg-3 mb-4">
+				<div class="card h-100" id="card1">
+					<img src="/images/apropos/miel.png" class="card-img-top" alt="Livraison">
+					<div class="card-body">
+						<h5 class="card-title">Les ruches de Ludo</h5>
+						<p class="card-text">Moutarde au miel, Miel de fleurs, Miel d'accacia.</p>
+                        <p>100% naturel</p>
+                    </div>
+				</div>
+			</div>
+			<div class="text-center mt-4" style="height: 80px;">
+				<p class="texte-primeur">A retrouver chez votre primeur de Laigneville.</p>
+
+			</div>
+		</div>
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('zoom');
+        });
+    });
+});
+
+	</script>
+{% endblock %}

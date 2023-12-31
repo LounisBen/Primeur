@@ -15,6 +15,11 @@
             <div class="row">
                 <div class="col-12 text-center mt-4">
                     <h1 class="title-style">BIENVENUE CHEZ LE PRIMEUR DE LAIGNEVILLE</h1>
+                
+                    <div id="balle-container">
+                        <div id="maBalle" class="balle">10% tous les <br> mardi et jeudi <br> sur votre ticket <br> de caisse</div>
+                    </div>
+                
                 </div>
             </div>
 
@@ -28,8 +33,7 @@
                     </p>
                     
                 </div>
-
-                
+                                
                 <div class="col-md-12">
                     <p class="lead text-primary mt-4">
                         <strong>Adresse :</strong> 285 rue André Gourdin, 60290 Laigneville<br>
@@ -69,5 +73,17 @@
         </div>
         
     </div>
+        
 	<div style="height: 80px;"></div>
+    <script>
+    // Attendre 30 secondes avant d'arrêter l'animation
+    setTimeout(function() {
+        // Sélectionnez la balle par son identifiant
+        const balle = document.getElementById("maBalle");
+
+        // Arrêtez l'animation en modifiant le style
+        balle.style.animationPlayState = 'paused';
+    }, 41000); // 30000 millisecondes équivalent à 30 secondes
+</script>
+
 {% endblock %}

@@ -48,7 +48,7 @@
 }
 
 #carouselExampleAutoplaying {
-  width: 500px;
+  width: 350px;
   margin: auto;
 }
  .carousel-item img {
@@ -93,5 +93,81 @@
 
 .card-custom {
   height: 400px; /* Réglez la hauteur souhaitée */
+}
+
+#balle-container {
+  position: absolute;
+  width: 100%; /* Permet à la balle de se déplacer sur toute la largeur */
+  height: 100vh; /* Hauteur totale de la fenêtre de visualisation */
+  overflow: hidden; /* Empêche l'animation de déborder */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* S'assure que la balle est visible par-dessus les autres éléments */
+}
+
+.balle {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px; /* Ajustez selon la taille de votre balle */
+    animation: rebondir 40s linear infinite;
+    padding: 10px; /* Ajoutez du padding pour que le texte ne touche pas les bords */
+    box-sizing: border-box; /* Assurez-vous que le padding ne change pas les dimensions de la balle */
+    text-align: center; /* Centre le texte horizontalement */
+    white-space: normal; /* Permet le retour à la ligne du texte */
+}
+
+@keyframes rebondir {
+  0% { bottom: 0; left: 0; }
+  25% { bottom: 100%; left: 25%; } /* Montée avec un léger déplacement vers la droite */
+  50% { bottom: 0; left: 50%; } /* Descente avec continuation du déplacement vers la droite */
+  75% { bottom: 100%; left: 75%; } /* Montée suivante avec un déplacement plus vers la droite */
+  100% { bottom: 0; left: 100%; } /* Retour au bas avec encore plus de déplacement vers la droite */
+}
+
+.banderole-texte {
+  width: 100%;
+  background-color: #52bd54; /* Choisissez une couleur de fond */
+  overflow: hidden;
+  white-space: nowrap;
+  line-height: 50px; /* Hauteur de la ligne pour centrer le texte verticalement */
+  height: 50px; /* Hauteur de la banderole */
+  display: flex;
+  align-items: center; /* Centrage vertical avec flexbox */
+}
+
+.banderole-texte p {
+  display: inline-block;
+  padding-left: 100%; /* Commence en dehors de l'écran */
+  animation: defilement 15s linear infinite; /* Animation continue */
+  font-size: 24px; /* Taille de la police, ajustez selon vos besoins */
+  margin: 0; /* Enlève les marges par défaut du paragraphe */  
+}
+
+@keyframes defilement {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.texte-primeur {
+  font-size: 20px; /* ou la taille que vous préférez */
+}
+
+.zoom {
+  transform: scale(1.5) rotate(360deg); /* Ajustez la valeur pour contrôler le niveau de zoom */
+  transition: transform 1.5s; /* Animation douce */
+  transform-origin: right; /* Pivot de la rotation sur le côté droit */  
+  z-index: 10; /* Assurez-vous que la carte zoomée passe au-dessus des autres éléments */
+}
+
+.card {
+  transition: transform 1.5s ease; /* Animation douce pour les deux sens */
+  cursor: pointer; /* Indique que la carte est cliquable */
 }
 
