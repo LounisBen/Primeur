@@ -1,153 +1,160 @@
+/* pied de page */
 .footer1 {
-    /* position: fixed; */
-    bottom: 0;
-    width: 100%;
-    background: rgb(7, 66, 105);
-    color: #FFFFFF;
-  }
+  bottom: 0;
+  width: 100%;
+  background: rgb(7, 66, 105);
+  color: #FFFFFF;
+}
 
+/* carte Google Maps */
 .map-container {
-    text-align: center;
-    padding-bottom: 50px; 
+  text-align: center;
+  padding-bottom: 50px;
 }
 
 .map-container iframe {
-    margin: auto;
+  max-width: 100%;
+  margin: auto;
+  
 }
 
+/* conteneur de contenu principal */
 .content-container {
-  min-height: calc(90vh - 10px); 
- }
-
- .custom-img-height {
-  height: 400px; 
+  min-height: calc(90vh - 10px);
 }
 
+/* images personnalisées */
+.custom-img-height {
+  height: 400px;
+}
+
+/* impression */
 @media print {
-  
   .navbar, .footer, .btn, .navigation-links {
-      display: none !important;
+    display: none !important;
   }
 
-  
   body {
-      font-size: 10px;
+    font-size: 10px;
   }
 
-.content-container {
+  .content-container {
     width: 100%;
     margin: 0;
     padding: 0;
-}
-  
+  }
 }
 
+
 .cart-icon {
-  font-size: 30px !important;
-  
+  font-size: 25px !important;
 }
+
 
 #carouselExampleAutoplaying {
   width: 350px;
   margin: auto;
 }
- .carousel-item img {
-    width: 30%;
-    max-height: 100%;
+
+.carousel-item img {
+  width: 30%;
+  max-height: 100%;
 }
 
 .carousel-item {
-  border: 2px solid #2b7dce; /* Couleur et épaisseur de la bordure */
-  padding: 5px; /* Espace intérieur de la bordure pour un meilleur aspect */
+  border: 2px solid #2b7dce;
+  padding: 5px;
 }
 
 .title-style {
-  font-size: 3em; /* Taille de police plus grande */
-  border: 3px solid #007bff; /* Bordure bleue */
+  font-size: 3em;
+  border: 3px solid #007bff;
   padding: 10px;
   margin-bottom: 20px;
   text-align: center;
-  font-family: 'Arial', sans-serif; /* Choisissez une police élégante */
-  animation: border-animation 3s infinite; /* Animation infinie */
+  font-family: 'Arial', sans-serif;
+  animation: border-animation 3s infinite;
 }
 
 @keyframes border-animation {
-  0%   {border-color: #007bff;}
-  25%  {border-color: #28a745;}
-  50%  {border-color: #ffc107;}
-  75%  {border-color: #dc3545;}
-  100% {border-color: #007bff;}
+  0% { border-color: #007bff; }
+  25% { border-color: #28a745; }
+  50% { border-color: #ffc107; }
+  75% { border-color: #dc3545; }
+  100% { border-color: #007bff; }
 }
 
 .title-container {
-    max-width: 50%; /* Ajustez selon vos besoins */
-    margin: 0 auto; /* Centre le div */
-    /* Autres styles si nécessaire */
+  max-width: 50%;
+  margin: 0 auto;
 }
 
+/* Styles pour le texte de la carte */
 .card-text {
-  max-height: 100px; /* Ajustez selon vos besoins */
-  overflow-y: auto; /* Ajoute une barre de défilement si nécessaire */
+  max-height: 100px;
+  overflow-y: auto;
 }
 
-
+/* Styles pour les cartes personnalisées */
 .card-custom {
-  height: 400px; /* Réglez la hauteur souhaitée */
+  height: 400px;
 }
 
+/* animation de la balle */
 #balle-container {
   position: absolute;
-  width: 100%; /* Permet à la balle de se déplacer sur toute la largeur */
-  height: 100vh; /* Hauteur totale de la fenêtre de visualisation */
-  overflow: hidden; /* Empêche l'animation de déborder */
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
   top: 0;
   left: 0;
-  z-index: 1000; /* S'assure que la balle est visible par-dessus les autres éléments */
+  z-index: 1000;
 }
 
 .balle {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   background-color: red;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 18px; /* Ajustez selon la taille de votre balle */
-    animation: rebondir 40s linear infinite;
-    padding: 10px; /* Ajoutez du padding pour que le texte ne touche pas les bords */
-    box-sizing: border-box; /* Assurez-vous que le padding ne change pas les dimensions de la balle */
-    text-align: center; /* Centre le texte horizontalement */
-    white-space: normal; /* Permet le retour à la ligne du texte */
+  border-radius: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  animation: rebondir 40s linear infinite;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  white-space: normal;
 }
 
 @keyframes rebondir {
   0% { bottom: 0; left: 0; }
-  25% { bottom: 100%; left: 25%; } /* Montée avec un léger déplacement vers la droite */
-  50% { bottom: 0; left: 50%; } /* Descente avec continuation du déplacement vers la droite */
-  75% { bottom: 100%; left: 75%; } /* Montée suivante avec un déplacement plus vers la droite */
-  100% { bottom: 0; left: 100%; } /* Retour au bas avec encore plus de déplacement vers la droite */
+  25% { bottom: 100%; left: 25%; }
+  50% { bottom: 0; left: 50%; }
+  75% { bottom: 100%; left: 75%; }
+  100% { bottom: 0; left: 100%; }
 }
 
+/* bande de texte défilant */
 .banderole-texte {
   width: 100%;
-  background-color: #52bd54; /* Choisissez une couleur de fond */
+  background-color: #52bd54;
   overflow: hidden;
   white-space: nowrap;
-  line-height: 50px; /* Hauteur de la ligne pour centrer le texte verticalement */
-  height: 50px; /* Hauteur de la banderole */
+  line-height: 50px;
+  height: 50px;
   display: flex;
-  align-items: center; /* Centrage vertical avec flexbox */
+  align-items: center;
 }
 
 .banderole-texte p {
   display: inline-block;
-  padding-left: 100%; /* Commence en dehors de l'écran */
-  animation: defilement 15s linear infinite; /* Animation continue */
-  font-size: 24px; /* Taille de la police, ajustez selon vos besoins */
-  margin: 0; /* Enlève les marges par défaut du paragraphe */  
+  padding-left: 100%;
+  animation: defilement 15s linear infinite;
+  font-size: 24px;
+  margin: 0;
 }
 
 @keyframes defilement {
@@ -155,19 +162,66 @@
   to { transform: translateX(-100%); }
 }
 
+/* texte en surbrillance */
 .texte-primeur {
-  font-size: 20px; /* ou la taille que vous préférez */
+  font-size: 20px;
 }
 
+/* effet de zoom sur la carte */
 .zoom {
-  transform: scale(1.5) rotate(360deg); /* Ajustez la valeur pour contrôler le niveau de zoom */
-  transition: transform 1.5s; /* Animation douce */
-  transform-origin: right; /* Pivot de la rotation sur le côté droit */  
-  z-index: 10; /* Assurez-vous que la carte zoomée passe au-dessus des autres éléments */
+  transform: scale(1.5) rotate(360deg);
+  transition: transform 1.5s;
+  transform-origin: right;
+  z-index: 10;
 }
 
+/* effet de transformation au survol */
 .card {
-  transition: transform 1.5s ease; /* Animation douce pour les deux sens */
-  cursor: pointer; /* Indique que la carte est cliquable */
+  transition: transform 1.5s ease;
+  cursor: pointer;
 }
+
+/* écrans de taille inférieure à 768px */
+@media (max-width: 768px) {
+  .navbar-brand {
+    margin-right: 0;
+  }
+
+  .navbar-nav {
+    margin-bottom: 0;
+  }
+
+  .content-container {
+    padding: 0;
+  }
+}
+.img-accueil {
+  width: 100%;
+  min-height: 200px; /* Ajustez la hauteur minimale */
+  object-fit: contain; /* Évite que l'image ne soit déformée tout en remplissant l'espace */
+}
+
+.btn-custom-height {
+  height: 30px;
+  width: 100%;
+}
+@media (max-width: 315px) {
+  .btn-text-adjust {
+      font-size: 8px;
+      width: 80%; 
+  }
+  
+}
+
+
+.nav-link {
+  color: white; 
+
+}
+
+
+.nav-link:hover {
+  color: #4ec513;
+}
+
 

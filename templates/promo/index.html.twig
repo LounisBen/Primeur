@@ -13,7 +13,7 @@
 	
 	<div class="container">
 		<div class="col-12 text-center mt-4">
-			<h1 class="title-style">NOS BONS PLANS</h1>
+			<h1 class="title-style">Nos bons plans</h1>
 		</div>
 
 		<div class="row justify-content-center">
@@ -41,7 +41,10 @@
 						{% if is_granted('ROLE_ADMIN') %}
 							<div class="d-flex flex-column align-items-center">
 								<a href="{{ path('edit_promo', { id: promo.id }) }}" class="btn btn-dark btn mb-2">Modifier</a>
-								<a href="{{ path('delete_promo', { id: promo.id }) }}" class="btn btn-danger btn-sm">Supprimer</a>
+								<form action="{{ path('delete_promo', { id: promo.id }) }}" method="post" onsubmit="return confirmDeletion()">
+                					<input type="hidden" name="csrf" value="{{ csrf_token('delete' ~ promo.id) }}">
+                					<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+            					</form>
 							</div>
 						{% endif %}
 					</div>
@@ -51,4 +54,9 @@
 			{% endfor %}
 		</div>
 	</div>
+	<script>
+		function confirmDeletion() {
+    	return confirm('Êtes-vous sûr de vouloir supprimer cette promo ?');
+		}
+	</script>
 {% endblock %}

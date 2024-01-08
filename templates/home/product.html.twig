@@ -6,58 +6,64 @@
 
 {% block body %}
 
-<div class="content-container">
-	<div class="row">
+	<div class="container">
 		
-		<div class="col-12">
-			<div class="title-container mt-4">
-			<h1 class="title-style">{{ category.name }}</h1>
-			
-			</div>
 
-			<div class="container">
-				<div class="row">
-					{% for product in products %}
-						<div class="col-md-6 mb-4">
-							<div class="card h-100 d-flex flex-row card-customp">
-								{% if product.imageName %}
-									<div class="product">
-										<a href="{{ path("app_detail", { id: product.id }) }}">
-											<img style="width: 150px; height: 150px;" src="{{ vich_uploader_asset(product, 'imageFile') }}">
-										</a>
-									</div>
-								{% else %}
-									<div>
-										{% if category.imagesrc %}
+			<div class="col-12">
+				<div class="col-12 text-center mt-4">
+					<h1 class="title-style">{{ category.name }}</h1>
+
+				</div>
+
+				<div class="container">
+					<div class="row">
+						{% for product in products %}
+							<div class="col-md-6 col-12 mb-4">
+								<div class="card h-100 d-flex flex-row card-customp">
+									{% if product.imageName %}
+										<div class="product">
 											<a href="{{ path("app_detail", { id: product.id }) }}">
-												<img style="max-width:150px; height: 150px;" src="/images/categorie/{{ category.imagesrc }}">
+												<img style="width: 120px; height: 130px;" src="{{ vich_uploader_asset(product, 'imageFile') }}" alt="{{ product.name }}">
 											</a>
-										{% else %}
-											<img style="max-width:150px; height: 150px;" src="/images/placeholder.jpg" alt="">
-										{% endif %}
-									</div>
-								{% endif %}
-								<div class="card-body d-flex flex-column">
-									<div>
-										<h5 class="card-title">{{ product.name }}</h5>
+										</div>
+									{% else %}
+										<div>
+											{% if category.imagesrc %}
+												<a href="{{ path("app_detail", { id: product.id }) }}">
+													<img style="max-width:120px; height: 130px;" src="/images/categorie/{{ category.imagesrc }}" alt="image rayon">
+												</a>
+											{% else %}
+												<img style="max-width:150px; height: 150px;" src="/images/placeholder.jpg" alt="image par défault">
+											{% endif %}
+										</div>
+									{% endif %}
+									<div class="card-body d-flex flex-column">
+										<div>
+											<h5 class="card-title">{{ product.name }}</h5>
 
+										</div>
+										<a href="{{ path("app_detail", { id: product.id }) }}" class="mt-auto btn btn-outline-primary btn-sm btn-block btn-custom-height btn-text-adjust" title="Voir le détail de {{ product.name }}">Voir</a>
 									</div>
-									<a href="{{ path("app_detail", { id: product.id }) }}" class="mt-auto btn btn-outline-primary btn-sm">Voir le détail</a>
 								</div>
 							</div>
-						</div>
 
 
-					{% endfor %}
-				</div>
-				<div class="text-end">
-					<a href="{{ path("app_category", { id: category.id }) }}" class="btn btn-primary btn-lg mb-4" title="Revenir à la catégorie précédente">Retour à Nos produits</a>
+						{% endfor %}
+					</div>
+
+					<div class="text-end">
+						<a href="{{ path("app_category", { id: category.id }) }}" class="btn btn-primary btn-lg mb-4" title="Revenir à la liste des produits de la catégorie {{ category.name }}">Retour à la catégorie
+							{{ category.name }}</a>
+					</div>
 				</div>
 			</div>
 			<div class="navigation d-flex justify-content-center">{{ knp_pagination_render(products) }}</div>
-			<div class="banderole-texte">
-    			<p>10% tous les mardis et jeudi sur votre ticket de caisse</p>
-			</div>
-			
-		</div>
-</div> {% endblock %}
+
+
+		
+
+	</div>
+	<div class="banderole-texte">
+		<p>10% tous les mardis et jeudi sur votre ticket de caisse</p>
+	</div>
+{% endblock %}

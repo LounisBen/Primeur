@@ -4,18 +4,18 @@
 
 {% block body %}
 <div class="row">
-{# <img src="/images/accueil/accueilliste.jpg" class="img-fluid" alt="..."> #}
+
     <div class="container mt-4">
     
         <div class="content-container" style="margin-top: 100px;">
-            <div class="col-10 mx-auto">
+            <div class="col-8 mx-auto">
                 <h1 class="text-center">Primeur de Laigneville - Votre liste de produits</h1>
                 <hr my-4>
                 <div class="d-flex justify-content-end">
                         <button onclick="window.print()" class="btn btn-outline-primary me-4" title="Imprimer votre liste"><i class="fas fa-print cart-icon"></i></button>
                         <a href="{{ path('envoyer_liste') }}" class="btn btn-outline-primary" title="Envoyer votre liste"><i class="fas fa-envelope cart-icon"> </i></a>
                     </div>
-                <table class="table">
+                <table class="table-responsive">
                     <thead>
                         <tr>
                             <th style="width: 30%;">Produit</th>
@@ -33,12 +33,12 @@
                                 {% if article.product.imageName %}
                                     <div class="produitImage">
                                         <a href="{{ path("app_detail", { id: article.product.id }) }}">
-                                            <img style="width: 100px; height: 100px;" src="{{ vich_uploader_asset(article.product, 'imageFile') }}">
+                                            <img style="width: 100px; height: 100px;" src="{{ vich_uploader_asset(article.product, 'imageFile') }}" class="img-fluid">
                                         </a>
                                     </div>
                                 {% elseif article.product.category.imagesrc %}
                                     <a href="{{ path("app_detail", { id: article.product.id }) }}">
-                                        <img style="max-width:100px; height: 100px;" src="/images/categorie/{{ article.product.category.imagesrc }}">
+                                        <img style="max-width:100px; height: 100px;" src="/images/categorie/{{ article.product.category.imagesrc }}" class="img-fluid">
                                     </a>
                                 {% else %}
                                     <img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
@@ -85,5 +85,6 @@
         </div>
         
     </div>
+    
 </div>   
 {% endblock %}

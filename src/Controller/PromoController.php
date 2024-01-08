@@ -10,7 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
+use Symfony\Component\Security\Csrf\CsrfToken;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+
 
 class PromoController extends AbstractController
 {
@@ -82,10 +86,15 @@ class PromoController extends AbstractController
     }
 
     #[IsGranted('ROLE_ADMIN')]
-    #[Route('/promo/suppression/{id}', 'delete_promo', methods: ['GET', 'POST'])]
-    public function delete(EntityManagerInterface $manager, Promo $promo, Request $request): Response {
+    #[Route('/promo/suppression/{id}', 'delete_promo', methods: ['POST'])]
+    public function delete(EntityManagerInterface $manager, Promo $promo, Request $request, CsrfTokenManagerInterface $csrfTokenManager): Response {
         
-            
+        $csrfToken = new CsrfToken('delete' . $promo->getId(), $request->request->get('csrf'));
+
+        if (!$csrfTokenManager->isTokenValid($csrfToken)) {
+            $this->addFlash('danger', 'Token de sécurité invalide.');
+            return $this->redirectToRoute('app_promo');
+        }
             
             $manager->remove($promo);
             $manager->flush();

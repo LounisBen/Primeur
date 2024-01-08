@@ -4,23 +4,25 @@
 {% endblock %}
 
 {% block body %}
-<div class="container">	
-	<div class="content-container" style="margin-top: 80px;">
-    
-		<h1 class="mt-4">Formulaire de modification du mot de passe</h1>
+	<div class="container">
+		<div class="content-container" style="margin-top: 80px;">
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<h1 class="mt-4">Formulaire de modification du mot de passe</h1>
 
-		{% for message in app.flashes('warning') %}
-            <div class="alert alert-warning mt-4">
-                {{ message }}
-            </div>
-        {% endfor %}	
+					{% for message in app.flashes('warning') %}
+						<div class="alert alert-warning mt-4">
+							{{ message }}
+						</div>
+					{% endfor %}
 
-			
 
-			{{ form(form) }}
+					{{ form(form) }}
 
+					</div>
+				</div>
 			</div>
 		</div>
-</div>
+	</div>
 
-	{% endblock %}
+{% endblock %}
