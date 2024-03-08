@@ -21,7 +21,9 @@ security:
                 check_path: app_login
             logout:
                 path: app_logout
-            
+        # reset_password:
+        # pattern: ^/reset-password
+        # anonymous: true   
 
             
 
