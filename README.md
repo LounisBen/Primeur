@@ -9,3 +9,14 @@ La tâche était complète, et j’ai pu voir toutes les étapes de la réalisat
 •	Analyse des besoins, étude de la concurrence, et définition du cahier des charges,
 •	Conception : du dictionnaire de données, du MCD, les UML au maquettage, cette partie a été fondamentale, et a représenté environ les 2/3 du projet,
 •	Développement du site : le choix des outils, l’écriture du code pour le back-end et le front et la gestion de la base de données.
+
+Le Primeur de Laigneville is a retail business. He sells fruits and vegetables, spices, and creamery products.
+The objective of my internship was to create a website for this business
+Having the project of setting up my own business, I wanted to approach this internship as prospecting for potential clients, and start to develop experience.
+The Le Primeur business needed to develop its visibility and its relationship with its customers, and it was therefore necessary to create a Le Primeur de Laigneville site to meet this need.
+The task was complete, and I was able to see all the stages of completion:
+• Analysis of needs, study of the competition, and definition of specifications,
+• Design: from the data dictionary, the MCD, the UML to the modeling, this part was fundamental, and represented around 2/3 of the project,
+• Site development: choosing tools, writing code for the back-end and front-end and managing the database.
+  After having defined the specifications, I launched into this new experience. Today, I finished my internship, and I am happy with the result.
+
